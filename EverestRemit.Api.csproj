@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	  <UserSecretsId>99d5079c-c331-4565-8551-49ef53517fd3</UserSecretsId>
+  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.13">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.13">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.0" />
+		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+	</ItemGroup>
+</Project>

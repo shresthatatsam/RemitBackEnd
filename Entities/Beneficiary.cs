@@ -1,0 +1,3 @@
+namespace EverestRemit.Api.Entities;
+
+public sealed class Beneficiary { public int Id { get; set; } public string UserId { get; set; } = ""; public ApplicationUser? User { get; set; } public string AccountName { get; set; } = ""; public string AccountNumber { get; set; } = ""; public string BankName { get; set; } = ""; public string BankCountry { get; set; } = "Nepal"; public string? BankCode { get; set; } public string? BranchName { get; set; } public string Currency { get; set; } = "NPR"; public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow; }

@@ -1,0 +1,3 @@
+using System.Security.Claims;using EverestRemit.Api.DTOs;using EverestRemit.Api.Interfaces;using Microsoft.AspNetCore.Authorization;using Microsoft.AspNetCore.Mvc;
+namespace EverestRemit.Api.Controllers;
+[ApiController,Route("api/exchange-rates")]public sealed class ExchangeRatesController(IExchangeRateService s):ControllerBase{[HttpGet,AllowAnonymous]public async Task<IActionResult> Get(CancellationToken ct)=>Ok(await s.GetActiveAsync(ct));[HttpPost,Authorize(Roles="Admin")]public async Task<IActionResult> Create(ExchangeRateRequest r,CancellationToken ct){try{return Ok(await s.CreateAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)!,r,ct));}catch(InvalidOperationException e){return BadRequest(new{message=e.Message});}}}

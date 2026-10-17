@@ -1,0 +1,2 @@
+namespace EverestRemit.Api.Entities;
+public sealed class ExchangeRate { public int Id {get;set;} public string FromCurrency {get;set;}=""; public string ToCurrency {get;set;}="NPR"; public decimal Rate {get;set;} public bool IsActive {get;set;}=true; public DateTime EffectiveAtUtc {get;set;}=DateTime.UtcNow; public string? UpdatedByUserId {get;set;} }

@@ -1,0 +1,3 @@
+using Microsoft.AspNetCore.Identity;
+namespace EverestRemit.Api.Entities;
+public sealed class ApplicationUser : IdentityUser { public string FullName {get;set;}=""; public DateTime CreatedAtUtc {get;set;}=DateTime.UtcNow; public bool IsActive {get;set;}=true; public ICollection<Beneficiary> Beneficiaries {get;set;}=new List<Beneficiary>(); public ICollection<Deposit> Deposits {get;set;}=new List<Deposit>(); public ICollection<RemittanceTransfer> Transfers {get;set;}=new List<RemittanceTransfer>(); public KycApplication? KycApplication {get;set;} }

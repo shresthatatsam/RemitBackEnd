@@ -1,0 +1,5 @@
+using System.Security.Claims;using EverestRemit.Api.DTOs;using EverestRemit.Api.Interfaces;using Microsoft.AspNetCore.Authorization;using Microsoft.AspNetCore.Mvc;
+namespace EverestRemit.Api.Controllers;
+[ApiController,Route("api/deposits"),Authorize]public sealed class DepositsController(IDepositService s):ControllerBase{string U=>User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+[HttpGet("me"),Authorize(Roles="User")]public async Task<IActionResult> Mine(CancellationToken ct)=>Ok(await s.GetMineAsync(U,ct));[HttpPost,Authorize(Roles="User")]public async Task<IActionResult> Create(CreateDepositRequest r,CancellationToken ct)=>Ok(await s.CreateAsync(U,r,ct));[HttpGet,Authorize(Roles="Admin")]public async Task<IActionResult> All(CancellationToken ct)=>Ok(await s.GetAllAsync(ct));
+[HttpPatch("{id:int}/review"),Authorize(Roles="Admin")]public async Task<IActionResult> Review(int id,ReviewDepositRequest r,CancellationToken ct){try{var x=await s.ReviewAsync(id,r,ct);return x==null?NotFound():Ok(x);}catch(InvalidOperationException e){return BadRequest(new{message=e.Message});}}}
